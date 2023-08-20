@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="">
+    {% block navbar %} {% endblock navbar %}
+    {% block content %}
+    {% endblock %}
+  </div>
+  <script type="text/javascript">
+    function detailImage(e){
+      let link 	= $(e).attr('alt');
+      let id	= $(e).attr('idnya');
+      console.log(id)
+      $.ajax({
+        type: 'GET',
+        url: link,
+        data: {id:id},
+        success: function(e) {
+          console.log(e)
+          $('#modal-isi').attr('src', e);
+          console.log($('#modal-isi'))
+        }
+      })
+    }
+  </script>
+</body>
+</html>

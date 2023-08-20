@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block navbar %}
+{% include 'nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+            <th scope="col">User</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Date</th>
+            <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in pictures %}
+                <tr>            
+                    <td>{{data.user}}</td>
+                    <td>{{data.activity}}</td>
+                    <td>{{data.date}}</td>
+                    <td><button alt="{% url 'sdm:detailImage' %}" onclick="detailImage(this)" idnya="{{data.id}}" id="detailImage" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Show Image
+                      </button></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Image</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img id="modal-isi" class="center" style="width: 300px">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

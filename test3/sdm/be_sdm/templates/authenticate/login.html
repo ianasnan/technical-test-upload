@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-4 position-absolute top-50 start-50 translate-middle">
+        {% if messages %}
+            {% for message in messages %}
+            {% if message.tags == "error" %}
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <div>
+                    {{message}}
+                </div>
+            </div>
+            {% endif %}
+            {% if message.tags == "success" %}
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    {{message}}
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        <h3 class="text-center">Login</h3>
+        <form action="{% url 'sdm:proseslogin' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Userame</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <div class="col-12">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </form>
+        <div class="text-center" style="padding-top: 30px">
+            <p>Not a member? <a href="{% url 'sdm:register_user' %}">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

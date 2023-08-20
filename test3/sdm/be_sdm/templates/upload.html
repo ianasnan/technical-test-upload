@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block navbar %}
+{% include 'nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="container position-relative py-2 px-4 ">
+    {% load cloudinary %}
+    <div class="row">
+        <form class="card col-md-6 center" style="padding: 16px" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Activity</label>
+                <input type="text" class="form-control" name="activity" value="File Upload">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Upload File</label>
+                <input type="file" class="form-control" name="image" multiple>
+            </div>
+            <div class="col-12">
+                <br>
+                <input type="submit" value="Upload" class="btn btn-primary">
+            </div>
+        </form> 
+    </div>
+</div>
+{% endblock %}

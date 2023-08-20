@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Login Activity{% endblock %}
+{% block navbar %}
+    {% include 'nav.html' %}
+{% endblock navbar %}
+{% block content %}
+<div class="container">
+    <h2>Login Activity</h2>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Last Login</th>
+          <th scope="col">Date Join</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for data in user %}
+              <tr>            
+                  <td>{{data.username}}</td>
+                  <td>{{data.last_login}}</td>
+                  <td>{{data.date_joined}}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
